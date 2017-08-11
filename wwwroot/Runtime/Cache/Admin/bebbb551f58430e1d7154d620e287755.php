@@ -120,17 +120,19 @@
                         <td><?php echo ($Repair["address"]); ?></td>
                         <td><?php echo ($Repair["problem"]); ?></td>
                         <td><?php echo ($Repair["time"]); ?></td>
-                        <td><?php echo ($Repair["state"]); ?></td>
+                        <td><?PhP if($Repair['state']==0){echo '未处理';}elseif($Repair['state']==1){echo '处理中';}elseif($Repair['state']==2){echo '已处理';}?></td>
                         <td>
                             <a title="查看详情" href="<?php echo U('edit?id='.$Repair['id']);?>">查看详情</a>
-                            <a href="<?php echo U('setStatus?ids='.$Repair['id'].'&status='.abs(1-$Repair['state']));?>" class="ajax-get"><?php echo (show_status_op($channel["status"])); ?></a>
+                            <a href="<?php echo U('state?id='.$Repair['id']);?>" class="ajax-get"><?PhP if($Repair['state']==0){echo '接受处理';}elseif($Repair['state']==1){echo '已处理';}else{echo '维修完成';}?></a>
                             <a class="confirm ajax-get" title="删除" href="<?php echo U('del?id='.$Repair['id']);?>">删除</a>
                         </td>
                     </tr><?php endforeach; endif; else: echo "" ;endif; ?>
                 <?php else: ?>
                 <td colspan="6" class="text-center"> aOh! 暂时还没有内容! </td><?php endif; ?>
             </tbody>
+
         </table>
+        <?=$page ?>
     </div>
 
         </div>

@@ -1,0 +1,23 @@
+<extend name="Base/base"/>
+
+
+
+
+<block name="main">
+    <div class="container-fluid">
+        <volist name="list" id="row">
+        <div class="row noticeList">
+            <a href="{:U('article?id='.$row['id'])}">
+                <div class="col-xs-2">
+                    <img class="noticeImg" src="../image/1.png" />
+                </div>
+                <div class="col-xs-10">
+                    <p class="title">{$row.title}</p>
+                    <p class="intro">{$row.description}</p>
+                    <p class="info">浏览:{$row.view}<span class="pull-right">2016-05-11</span> </p>
+                </div>
+            </a>
+        </div>
+        </volist>
+    </div>
+</block>

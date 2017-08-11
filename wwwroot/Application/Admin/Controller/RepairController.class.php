@@ -12,14 +12,14 @@ namespace Admin\Controller;
 class RepairController extends AdminController
 {
     public function index(){
-        $pid = i('get.pid', 0);
-        /* 获取频道列表 */
-       // $map  = array('status' => array('gt', -1), 'pid'=>$pid);
-        $list = M('Repair')->select();
+        $list = M('Repair');
 
-        $this->assign('list', $list);
-        $this->assign('pid', $pid);
-        $this->meta_title = '导航管理';
+        $count= $list->count();//总条数
+        $Page= new \Think\Page($count,3);//每页显示多少条
+        $show= $Page->show();//分页显示输出
+        $list = $list->order('time')->limit($Page->firstRow.','.$Page->listRows)->select();
+        $this->assign('list',$list);
+        $this->assign('page',$show);
         $this->display();
     }
 
@@ -28,7 +28,6 @@ class RepairController extends AdminController
         if(IS_POST){
             $Repair = D('Repair');
             $data = $Repair->create();
-
             if($data){
                 $md5=md5(rand(1,50));
                 $Repair->sn=$md5;
@@ -82,4 +81,13 @@ class RepairController extends AdminController
         }
     }
 
+    //修改状态
+    public function state($id = 0)
+    {
+        if(M('Repair')->where(array('id'=> $id,'state'=>0))->setField('state',1)){
+            $this->success("删除成功!");
+        }elseif(M('Repair')->where(array('id'=> $id,'state'=>1))->setField('state',2)){
+            $this->success("删除成功!");
+    }
+    }
 }

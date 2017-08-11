@@ -38,4 +38,6 @@ class HomeController extends Controller {
 		is_login() || $this->error('您还没有登录，请先登录！', U('User/login'));
 	}
 
+
+
 }

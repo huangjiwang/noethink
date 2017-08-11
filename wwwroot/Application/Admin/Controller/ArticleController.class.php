@@ -445,6 +445,7 @@ class ArticleController extends AdminController {
      * @author huajie <banhuajie@163.com>
      */
     public function update(){
+
         $res = D('Document')->update();
         if(!$res){
             $this->error(D('Document')->getError());

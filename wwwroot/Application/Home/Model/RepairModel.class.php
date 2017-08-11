@@ -1,6 +1,6 @@
 <?php
 
-namespace Admin\Model;
+namespace Home\Model;
 use Think\Model;
 
 /**
@@ -13,7 +13,7 @@ class RepairModel extends Model {
         array('name', 'require', '报修人不能为空', self::MUST_VALIDATE , 'regex', self::MODEL_BOTH),
         array('address', 'require', '地址不能为空', self::MUST_VALIDATE , 'regex', self::MODEL_BOTH),
         array('problem', 'require', '问题不能为空', self::MUST_VALIDATE , 'regex', self::MODEL_BOTH),
-        array('tel', 'require', '电话不能为空', self::MUST_VALIDATE , 'regex', self::MODEL_BOTH),
+        array('problem', 'tel', '电话不能为空', self::MUST_VALIDATE , 'regex', self::MODEL_BOTH),
     );
 
     protected $_auto = array(
