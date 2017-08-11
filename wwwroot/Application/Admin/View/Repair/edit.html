@@ -1,0 +1,43 @@
+<extend name="Public/base"/>
+
+<block name="body">
+    <div class="main-title">
+        <h2>详情信息</h2>
+    </div>
+    <br class="data-table table-striped">
+
+        <volist name="list" id="Repair">
+                保修单号:&nbsp;&nbsp; {$Repair.sn}<br/><br/>
+                报修人: &nbsp;&nbsp;{$Repair.name}<br/><br/>
+                电话:&nbsp;&nbsp; {$Repair.tel}<br/><br/>
+                地址: &nbsp;&nbsp;{$Repair.address}<br/><br/>
+                问题: &nbsp;&nbsp;{$Repair.problem}<br/><br/>
+                报修时间:&nbsp;&nbsp; {$Repair.time}<br/><br/>
+                状态:&nbsp;&nbsp; {$Repair.state}<br/><br/>
+        </volist>
+    </div>
+</block>
+
+<block name="script">
+    <script type="text/javascript">
+        $(function() {
+            //点击排序
+            $('.list_sort').click(function(){
+                var url = $(this).attr('url');
+                var ids = $('.ids:checked');
+                var param = '';
+                if(ids.length > 0){
+                    var str = new Array();
+                    ids.each(function(){
+                        str.push($(this).val());
+                    });
+                    param = str.join(',');
+                }
+
+                if(url != undefined && url != ''){
+                    window.location.href = url + '/ids/' + param;
+                }
+            });
+        });
+    </script>
+</block>
