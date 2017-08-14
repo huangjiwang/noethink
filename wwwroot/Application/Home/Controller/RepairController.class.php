@@ -15,8 +15,8 @@ class RepairController extends HomeController
 {
     //小区通知
     public function notice(){
-        $list = M('Document')->select();
-        $this->assign('list', $list);
+        $model=M('document')->alias('d')->join('onethink_picture p  ON d.cover_id = p.id')->select();
+        $this->assign('list', $model);
         $this->display();
     }
 

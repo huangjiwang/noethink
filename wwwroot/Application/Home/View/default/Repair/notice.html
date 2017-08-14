@@ -9,7 +9,7 @@
         <div class="row noticeList">
             <a href="{:U('article?id='.$row['id'])}">
                 <div class="col-xs-2">
-                    <img class="noticeImg" src="../image/1.png" />
+                    <img class="noticeImg" src="{$row.path}" />
                 </div>
                 <div class="col-xs-10">
                     <p class="title">{$row.title}</p>
